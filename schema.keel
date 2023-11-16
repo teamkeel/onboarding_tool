@@ -5,7 +5,7 @@ model Person {
         startDate Date?
         jobTitle JobTitle?
         employeeType EmployeeType?
-        onboardingComplete Text? 
+        onboardingComplete OnboardingComplete?
     }
 
     actions {
@@ -13,7 +13,9 @@ model Person {
             @set(person.owner = ctx.identity)}
         update updatePerson(id) with (personName?, startDate?, jobTitle?, employeeType?)
         delete deletePerson(id)
-        list allPerson (personName, startDate)
+        list allPerson (personName, startDate){
+            @where("OnboardingComplete" == "no")
+        }
     }
 
 @permission(
@@ -34,6 +36,11 @@ enum JobTitle {
 enum EmployeeType {
     Employee
     Contractor
+}
+
+enum OnboardingComplete {
+    Yes
+    No
 }
 
 model ToDos {
