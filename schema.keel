@@ -1,17 +1,21 @@
 model Person {
     fields {
         personName Text {@unique}
+        owner Identity
         startDate Date
         jobTitle JobTitle
         employeeType EmployeeType
     }
 
     actions {
-        create createPerson() with (personName, startDate?, jobTitle?, employeeType?) 
+        create createPerson() with (personName, startDate?, jobTitle?, employeeType?) {
+            @set(person.owner = ctx.identity)}
+        update updatePerson(id) with (personName?, startDate?, jobTitle?, employeeType?)
+        delete deletePerson(id)
     }
 
 @permission(
-    actions: [create],
+    actions: [create, update, delete],
     expression: true
 )
 }
