@@ -1,0 +1,31 @@
+model Person {
+    fields {
+        personName Text {@unique}
+        startDate Timestamp
+        jobTitle JobTitle
+        employeeType EmployeeType
+    }
+
+    actions {
+        create createPerson() with (personName, startDate?, jobTitle?, employeeType?) 
+    }
+
+@permission(
+    actions: [create],
+    expression: true
+)
+}
+
+enum JobTitle {
+    SoftwareEngineer
+    Designer
+    ProductManager
+    TechnicalWriter
+    DeveloperRelations
+    VirtualAssistant
+}
+
+enum EmployeeType {
+    Employee
+    Contractor
+}
