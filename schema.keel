@@ -1,7 +1,7 @@
 model Person {
     fields {
         personName Text {@unique}
-        startDate Timestamp
+        startDate Date
         jobTitle JobTitle
         employeeType EmployeeType
     }
