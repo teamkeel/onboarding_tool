@@ -2,10 +2,10 @@ model Person {
     fields {
         personName Text {@unique}
         owner Identity
-        startDate Date
-        jobTitle JobTitle
-        employeeType EmployeeType
-        onboardingComplete Text 
+        startDate Date?
+        jobTitle JobTitle?
+        employeeType EmployeeType?
+        onboardingComplete Text? 
     }
 
     actions {
