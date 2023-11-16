@@ -5,13 +5,15 @@ model Person {
         startDate Date
         jobTitle JobTitle
         employeeType EmployeeType
+        onboardingComplete Text 
     }
 
     actions {
-        create createPerson() with (personName, startDate?, jobTitle?, employeeType?) {
+        create createPerson() with (personName, startDate?, jobTitle?, employeeType?, onboardingComplete?) {
             @set(person.owner = ctx.identity)}
         update updatePerson(id) with (personName?, startDate?, jobTitle?, employeeType?)
         delete deletePerson(id)
+        list allPerson (personName, startDate)
     }
 
 @permission(
@@ -32,4 +34,12 @@ enum JobTitle {
 enum EmployeeType {
     Employee
     Contractor
+}
+
+model ToDos {
+    fields {
+        task Text
+        dueDate Date
+        taskOwner Text 
+    }
 }
