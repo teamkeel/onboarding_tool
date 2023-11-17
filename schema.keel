@@ -17,6 +17,9 @@ model Person {
         get getPerson(id)
         list allPerson (personName, startDate){
             @where("OnboardingComplete" == "no")
+            @permission(
+                expression: true
+            )
         }
     }
 
