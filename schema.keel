@@ -6,10 +6,12 @@ model Person {
         jobTitle JobTitle?
         employeeType EmployeeType?
         onboardingComplete OnboardingComplete?
+        tasks ToDos?
+        personToDos PersonToDos?
     }
 
     actions {
-        create createPerson() with (personName, startDate?, jobTitle?, employeeType?, onboardingComplete?) {
+        create createPerson() with (personName, startDate?, jobTitle?, employeeType?, onboardingComplete?, tasks?, personToDos?) {
             @set(person.owner = ctx.identity)}
         update updatePerson(id) with (personName?, startDate?, jobTitle?, employeeType?)
         delete deletePerson(id)
@@ -46,8 +48,16 @@ enum OnboardingComplete {
 
 model ToDos {
     fields {
-        task Text
+        tasks ToDos[]
         dueDate Date
-        taskOwner Text 
+        taskOwner Identity 
+        personToDos PersonToDos
+    }
+}
+
+model PersonToDos {
+    fields {
+        person Person
+        todos ToDos
     }
 }
