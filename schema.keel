@@ -10,7 +10,7 @@ model Person {
         }
 
     actions {
-        create createPerson() with (personName, startDate?, jobTitle?, employeeType?, onboardingComplete?, tasks?, personToDos?) {
+        create createPerson() with (personName, startDate?, jobTitle?, employeeType?, onboardingComplete?, tasks.id?) {
             @set(person.owner = ctx.identity)}
         update updatePerson(id) with (personName?, startDate?, jobTitle?, employeeType?)
         delete deletePerson(id)
