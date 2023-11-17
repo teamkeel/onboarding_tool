@@ -60,7 +60,7 @@ model ToDo {
     }
 
 @permission(
-    actions: [create, update, delete],
+    actions: [create, update, delete, list],
     expression: true
 )
 }
