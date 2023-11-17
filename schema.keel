@@ -13,13 +13,14 @@ model Person {
             @set(person.owner = ctx.identity)}
         update updatePerson(id) with (personName?, startDate?, jobTitle?, employeeType?)
         delete deletePerson(id)
+        get getPerson(id)
         list allPerson (personName, startDate){
             @where("OnboardingComplete" == "no")
         }
     }
 
 @permission(
-    actions: [create, update, delete],
+    actions: [create, update, delete, get, list],
     expression: true
 )
 }
