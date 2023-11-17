@@ -53,8 +53,8 @@ model ToDo {
     }
 
     actions {
-        create createToDo() with (taskName, dueDate?, person?)
-        update updateToDo(id) with (taskName?, dueDate?, person?)
+        create createToDo() with (taskName, dueDate?, person.id?)
+        update updateToDo(id) with (taskName?, dueDate?, person.id?)
         delete deleteToDo(id)
     }
 
