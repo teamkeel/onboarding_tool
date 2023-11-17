@@ -7,8 +7,7 @@ model Person {
         employeeType EmployeeType?
         onboardingComplete OnboardingComplete?
         tasks ToDos?
-        personToDos PersonToDos?
-    }
+        }
 
     actions {
         create createPerson() with (personName, startDate?, jobTitle?, employeeType?, onboardingComplete?, tasks?, personToDos?) {
@@ -48,16 +47,8 @@ enum OnboardingComplete {
 
 model ToDos {
     fields {
-        tasks ToDos[]
+        taskName Text
         dueDate Date
-        taskOwner Identity 
-        personToDos PersonToDos
-    }
-}
-
-model PersonToDos {
-    fields {
-        person Person
-        todos ToDos
+        person Person?
     }
 }
